@@ -85,6 +85,7 @@
 							<div class="dropdown-menu" aria-labelledby="navbarDropdown" id="dropdownId">
 								<a class="dropdown-item" href="#our_chef">Our Chefs</a>
 								<a class="dropdown-item" href="recipe.php">Free Recipe</a>
+								<a class="dropdown-item" href="see_review.php">See Review</a>
 								<div class="dropdown-divider"></div>
 								<a class="dropdown-item" href="#">Something else here</a>
 							</div>
