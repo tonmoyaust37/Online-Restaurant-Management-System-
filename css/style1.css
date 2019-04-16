@@ -1,0 +1,222 @@
+.header_Section {}
+
+#ourmaps{
+	height:360px;
+}
+nav, .navbar {
+    background: rgba(0, 0, 0, 0.6);
+    height: 80px;
+}
+.slider_upload{
+	position:relative;
+	height:300px;
+	top:200px;
+}
+.custom-toggler.navbar-toggler {
+    border-color: #333;
+
+	}
+
+#nav.change {
+
+    background: #1C3334;
+}
+#nav.change:hover {
+    background: #1C3334;
+}
+.text_section {
+    position: relative;
+    top: 100px;
+}
+.navbar-brand{
+	max-width:180px;
+	max-height:50px;
+}
+
+.navbar-toggler>.collapsed{
+	background:red;
+}
+ul>li>a {
+    font-size: 18px;
+    color: white;
+}
+
+.slider_section {
+    /* top: 100px; */
+    position: relative;
+}
+
+.navbar-nav>li>a {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    line-height: 80px;
+    /* line-height: 0px; */
+}
+
+.dropdown-menu>a {
+    color: white;
+}
+
+.dropdown:hover>.dropdown-menu {
+    display: block;
+    background: #000;
+    opacity: 0.6;
+    transition: 0.3;
+    transition-delay: 5s;
+}
+.displayOn{
+    opacity: 5;
+}
+.change.dropdown-menu {
+    background: yellow;
+    opacity: 0.6;
+}
+
+.dropdown-item:hover {
+    background: #000;
+    font-size: 20px;
+}
+
+
+.dropdown>.dropdown-toggle:active {
+    /*Without this, clicking will make it sticky*/
+    pointer-events: none;
+}
+
+.carousel-inner img {
+    width: 100%;
+    min-height: 600px;
+}
+
+.carousel-item {}
+
+#navbarSupportedContent ul li {
+    padding-left: 20px
+}
+
+#navbarSupportedContent ul li a:hover {
+    color: red;
+}
+
+.Exclusive_offer {
+    /* top: 100px; */
+    position: relative;
+}
+
+.Special_discount_offer {
+    position: relative;
+    /* top: 100px; */
+}
+
+.bg-orange {
+    background-color: #f0644f;
+    color: aliceblue;
+    font-weight: 600;
+    text-align: center
+}
+
+.m-right {
+    border: 2px solid #f0644f;
+    border-right: 2px solid white;
+}
+
+.underline-green {
+    width: 70px;
+    height: 2px;
+    background-color: lawngreen
+}
+
+.underline-blue {
+    width: 70px;
+    height: 2px;
+    background-color: mediumblue;
+}
+
+.underline-black {
+    width: 70px;
+    height: 2px;
+    background-color: black;
+}
+
+.zoom {
+    transition: transform .2s;
+    /* Animation */
+    margin: 0 auto;
+}
+
+.zoom:hover {
+    transform: scale(1.1125);
+	}
+
+/* carousel text  */
+
+.carousel-caption {
+    margin-bottom: 31px;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    background: #000;
+    opacity: 0.6;
+}
+
+.carousel-caption h2 {
+    font-size: 50px;
+    text-transform: uppercase;
+    font-family: 'Coiny', cursive;
+    animation-delay: 1s;
+    color: #e7ff00;
+}
+
+.carousel-caption p {
+    font-family: 'Coiny', cursive;
+    animation-delay: 2s;
+    font-size: 30px;
+}
+
+/* ----products prices---- */
+.img-products{
+    max-width: auto;
+    height: 300px;
+}
+
+.quantity_product{
+    width: 70px;
+}
+
+/* ----------Ends of products prices------ */
+
+
+/* --------About Us design---------*/
+.about_us {
+	padding-top: 100px;
+	padding-bottom: 40px;
+	background: #E3E3E3;
+}
+
+.about_us h2 {
+	color: #4A4A4A;
+	text-align: left;
+	font-weight: 700;
+	padding-bottom: 20px;
+}
+.about_us p {
+	color: #4a4a4a;
+	line-height: 28px;
+	text-align: justify;
+}
+.about_us_img{
+	
+}
+
+.our_map {
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
+
+
+
+@media(max-width: 992px) {
+    .navbar-collapse {
+    background: rgba(0, 0, 0, 0.8);
+    
+}
+  }

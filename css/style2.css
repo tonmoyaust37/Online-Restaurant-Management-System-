@@ -1,0 +1,165 @@
+.header_Section {}
+.ul{
+	float:right;
+}
+nav, .navbar {
+	background: rgba(0, 2, 0, 0.76);
+	height: 80px;
+}
+.itm{
+	max-height:152px;
+}
+#quantity{
+
+	max-width: 70px;
+
+}
+.slider_upload{
+	position:relative;
+	height:300px;
+	top:200px;
+}
+#nav.change {
+
+    background: #1C3334;
+}
+#nav.change:hover {
+    background: #1C3334;
+}
+.text_section {
+    position: relative;
+    top: 100px;
+}
+.navbar-brand{
+	max-width:180px;
+	max-height:50px;
+}
+
+.navbar-toggler>.collapsed{
+	background:red;
+}
+ul>li>a {
+    font-size: 18px;
+    color: white;
+}
+
+.slider_section {
+    /* top: 100px; */
+    position: relative;
+}
+
+.navbar-nav>li>a {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    line-height: 80px;
+    /* line-height: 0px; */
+}
+
+.dropdown-menu>a {
+    color: white;
+}
+
+.dropdown:hover>.dropdown-menu {
+    display: block;
+    background: #000;
+    opacity: 0.6;
+    transition: 0.3;
+    transition-delay: 5s;
+}
+.displayOn{
+    opacity: 5;
+}
+.change.dropdown-menu {
+    background: yellow;
+    opacity: 0.6;
+}
+
+.dropdown-item:hover {
+    background: #000;
+    font-size: 20px;
+}
+
+
+.dropdown>.dropdown-toggle:active {
+    /*Without this, clicking will make it sticky*/
+    pointer-events: none;
+}
+
+.carousel-item {}
+
+#navbarSupportedContent ul li {
+    padding-left: 20px
+}
+
+#navbarSupportedContent ul li a:hover {
+    color: red;
+}
+
+
+.navbar-nav {
+	 float: right;
+	margin: 0;
+	float: right;
+}
+
+/* ----------Ends of products prices------ */
+@media(max-width: 992px) {
+    .navbar-collapse {
+    background: rgba(0, 0, 0, 0.8);
+    
+}
+.sign_up{}
+
+.sign_up_text{}
+
+.sign_up_text h1 {
+	margin-top: 150px;
+	text-align: center;
+	margin-bottom: 30px;
+	font-weight: 700;
+	color:#393939;
+}
+
+.login_page{
+	
+	margin-top:100px;
+	
+}
+
+.login_page h2 {
+	font-size: 40px;
+	margin-bottom: 30px;
+	font-weight: 700;
+	color:#393939;
+}
+
+.food_menu_h2 {
+	font-size: 40px;
+	margin-top: 60px;
+	font-weight: 700;
+	color: #393939;
+}
+.User_data {
+	margin-top: 150px;
+}
+
+
+.User_data h2 {
+	font-size: 40px;
+	font-weight: 700;
+	color: #393939;
+	text-align: center;
+	margin-bottom: 30px;
+	margin-top: 100px;
+	border-top: 4px double black;
+	padding-top: 16px;
+	border-bottom: 4px double black;
+	padding-bottom: 16px;
+}
+.User_data tr {
+	background: #333333e6;
+}
+.black{background:black;}
+.table-dark.table-striped tbody tr:nth-of-type(2n+1) {
+	background:#0009;
+}
