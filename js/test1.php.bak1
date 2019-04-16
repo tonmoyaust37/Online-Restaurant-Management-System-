@@ -1,0 +1,503 @@
+<?php
+	
+	if(isset($_GET['page'])){
+		$page=$_GET['page'];
+		include 'case.php';
+	}
+	
+?>
+
+<?php
+	
+  // Create database connection
+  $db = mysqli_connect("localhost", "root", "", "onlinerestaurent");
+
+  // Initialize message variable
+  $msg = "";
+
+  // If upload button is clicked ...
+  if (isset($_POST['upload'])) {
+  	// Get image name
+  	$image = $_FILES['image']['name'];
+  	// Get text
+  	$image_text = mysqli_real_escape_string($db, $_POST['image_text']);
+
+  	// image file directory
+  	$target = "images/".basename($image);
+
+  	$sql = "INSERT INTO images (images, text) VALUES ('$image', '$image_text')";
+	echo $sql;
+  	// execute query
+  	mysqli_query($db, $sql);
+
+  	if (move_uploaded_file($_FILES['image']['tmp_name'], $target)) {
+  		$msg = "Image uploaded successfully";
+
+  	}else{
+  		$msg = "Failed to upload image";
+  	}
+  }
+  $result = mysqli_query($db, "SELECT * FROM images");
+
+	
+?>
+
+
+<!DOCTYPE html>
+<html lang="en">	
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title></title>
+		
+        <!-- Bootstrap -->
+        <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"> -->
+        <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"> -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="css/animate.css">
+		
+	<!-- All Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Coiny" rel="stylesheet">
+	<!-- font-family: 'Coiny', cursive; -->
+	
+	<link rel="stylesheet" href="css/style1.css">
+	
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
+	<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+	<![endif]-->
+	</head>
+	
+    <body>
+	
+	<div class="header_Section">
+	<!-- navbar-light bg-light  -->
+	<nav class="navbar navbar-expand-lg fixed-top" id="nav">
+	<a class="navbar-brand" href="#"><img src="img/logo3.png" class="img-fluid" alt="">
+	</a>
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+	<span class="navbar-toggler-icon"></span>
+	</button>
+	
+	<div class="collapse navbar-collapse" id="navbarSupportedContent">
+	<ul class="navbar-nav ml-auto">
+	<li class="nav-item active">
+	<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+	</li>
+	<li class="nav-item">
+	<a class="nav-link" href="#">Menu</a>
+	</li>
+	<li class="nav-item">
+	<a class="nav-link" href="#">Event</a>
+	</li>
+	<li class="nav-item">
+	<a class="nav-link" href="#">Gallery</a>
+	</li>
+	<li class="nav-item dropdown">
+	<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	About Us
+	</a>
+	<div class="dropdown-menu" aria-labelledby="navbarDropdown" id="dropdownId">
+	<a class="dropdown-item" href="#">Our Chefs</a>
+	<a class="dropdown-item" href="#">Free Recipe</a>
+	<div class="dropdown-divider"></div>
+	<a class="dropdown-item" href="#">Something else here</a>
+	</div>
+	</li>
+	<li class="nav-item">
+	<a class="nav-link" href="?page=contact_us">Contact Us</a>
+	</li>
+	</ul>
+	<!-- <form class="form-inline my-2 my-lg-0">
+	<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+	<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+	</form> -->
+	</div>
+	</nav>
+	
+	</div>
+	<div class="slider_section">
+	<div id="demo" class="carousel slide" data-interval="5000" data-ride="carousel">
+	
+	<!-- Indicators -->
+	<ul class="carousel-indicators">
+	<li data-target="#demo" data-slide-to="0" class="active"></li>
+	<li data-target="#demo" data-slide-to="1"></li>
+	<li data-target="#demo" data-slide-to="2"></li>
+	</ul>
+	
+	<!-- The slideshow -->
+	<div class="carousel-inner">
+	<div class="carousel-item active">
+	<img src="img/slide1.jpg" alt="Los Angeles" width="1100" height="500">
+	<div class="carousel-caption  d-md-block animated bounceInUp">
+	<h2 class="animated bounceInRight">Welcome</h2>
+	<p class="animated bounceInLeft">To the Bangladesh's largest online restaurent</p>
+	</div>
+	</div>
+	<div class="carousel-item">
+	<img src="img/slide2.jpg" alt="Chicago" width="1100" height="500">
+	<div class="carousel-caption d-none d-md-block animated bounceInDown">
+	<h2 class="animated bounceInRight">Tasty and Delicious food</h2>
+	<p class="animated bounceInLeft">We love food, lots of different food, just like you</p>
+	</div>
+	</div>
+	<div class="carousel-item">
+	<img src="img/slide3.jpg" alt="New York" width="1100" height="500">
+	<div class="carousel-caption d-none d-md-block animated bounceInUp">
+	<h2 class="animated bounceInRight">Place your order fast</h2>
+	<p class="animated bounceInLeft">To get a new taste</p>
+	</div>
+	</div>
+	</div>
+	
+	<!-- Left and right controls -->
+	<a class="carousel-control-prev" href="#demo" data-slide="prev">
+	<span class="carousel-control-prev-icon"></span>
+	</a>
+	<a class="carousel-control-next" href="#demo" data-slide="next">
+	<span class="carousel-control-next-icon"></span>
+	</a>
+	</div>
+	</div>
+	
+	<div class="container-fluid Exclusive_offer pt-3 pb-3 bg-orange d-none d-md-block">
+	<div class="container">
+	<div class="row">
+	<div class="col-md-4 m-right">
+	<h4>FREE SHIPPING</h4>
+	<p>On all orders over 50$</p>
+	</div>
+	
+	<div class="col-md-4 m-right">
+	<h4>CALL US ANYTIME</h4>
+	<p>+880 1820904850</p>
+	</div>
+	
+	<div class="col-md-4">
+	<h4>OUR LOCATION</h4>
+	<p>Modhubug, Rampura</p>
+	</div>
+	</div>
+	</div>
+	</div>
+	
+	
+	
+	<div class="Special_discount_offer container-fluid pt-5 pb-5 bg-light-gray">
+	<div class="container">
+	<div class="row">
+	<h4>SPECIAL OFFERS</h4>
+	</div>
+	<div class="row">
+	<div class="underline-blue"></div>
+	</div>
+	</div>
+	
+	<div class="container pt-5">
+	<div class="row">
+	<div class="col-md-3">
+	<div class="card zoom ">
+	<img src="img/food1.jpeg" alt="egg-fried-rice" class="card-img-top ">
+	<div class="card-body">
+	<h4>Egg Fried Rice</h4>
+	<h6>$67.87</h6>
+	<button class="btn btn-danger"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add To Cart</button>
+	</div>
+	</div>
+	</div>
+	
+	<div class="col-md-3">
+	<div class="card zoom ">
+	<img src="img/food2.jpeg" alt="Salad-dish" class="card-img-top">
+	<div class="card-body">
+	<h4>Pepper Jelly</h4>
+	<h6>$67.87</h6>
+	<button class="btn btn-danger"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add To Cart</button>
+	</div>
+	</div>
+	</div>
+	
+	<div class="col-md-3">
+	<div class="card zoom">
+	<img src="img/food3.jpeg" alt="stawberry-juice" class="card-img-top">
+	<div class="card-body">
+	<h4>Strawberry Juice</h4>
+	<h6>$67.87</h6>
+	<button class="btn btn-danger"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add To Cart</button>
+	</div>
+	</div>
+	</div>
+	
+	<div class="col-md-3">
+	<div class="card zoom">
+	<img src="img/food4.jpeg" alt="barbecue" class="card-img-top">
+	<div class="card-body">
+	<h4>Berbecue Meat Grill</h4>
+	<h6>$67.87</h6>
+	<button class="btn btn-danger"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add To Cart</button>
+	</div>
+	</div>
+	</div>
+	</div>
+	</div>
+	</div>
+	
+	
+	
+	
+	<!-- ----------This is the price tag with details----------- -->
+	<div class="container-fluid">
+	<div class="row">
+	<div class="col-md-2">
+	<p>left side</p>
+	</div>
+	<div class="col-md-8">
+	<h2 class="text-center">Freature Products</h2>
+	<div class="row">
+	
+	<div class="col-md-3">
+	<h4>Prawn Pasta</h4>
+	<img src="img/ffood1.jpg" class="img-fluid" alt="">
+	<p class="list-price text-danger">List Price: <s>$54.43</s> </p>
+	<p class="price">Our Price: 30.43$ </p>
+	<button type="button" name="button" class="btn btn-sm btn-success"> Details</button>
+	</div>
+	<div class="col-md-3">
+	<h4>Cheese Burger</h4>
+	<img src="img/ffood2.jpg" class="img-fluid" alt="">
+	<p class="list-price text-danger">List Price: <s>$54.43</s> </p>
+	<p class="price">Our Price: 30.43$ </p>
+	<button type="button" name="button" class="btn btn-sm btn-success"> Details</button>
+	</div>
+	<div class="col-md-3">
+	<h4>Prawn Pasta</h4>
+	<img src="img/ffood1.jpg" class="img-fluid" alt="">
+	<p class="list-price text-danger">List Price: <s>$54.43</s> </p>
+	<p class="price">Our Price: 30.43$ </p>
+	<button type="button" name="button" class="btn btn-sm btn-success"> Details</button>
+	</div>
+	<div class="col-md-3">
+	<h4>Prawn Pasta</h4>
+	<img src="img/ffood1.jpg" class="img-fluid" alt="">
+	<p class="list-price text-danger">List Price: <s>$54.43</s> </p>
+	<p class="price">Our Price: 30.43$ </p>
+	<button type="button" name="button" class="btn btn-sm btn-success"> Details</button>
+	</div>
+	
+	<div class="col-md-3">
+	<h4>Prawn Pasta</h4>
+	<img src="img/ffood1.jpg" class="img-fluid" alt="">
+	<p class="list-price text-danger">List Price: <s>$54.43</s> </p>
+	<p class="price">Our Price: 30.43$ </p>
+	<button type="button" name="button" class="btn btn-sm btn-success"> Details</button>
+	</div>
+	
+	<div class="col-md-3">
+	<h4>Prawn Pasta</h4>
+	<img src="img/ffood1.jpg" class="img-fluid" alt="">
+	<p class="list-price text-danger">List Price: <s>$54.43</s> </p>
+	<p class="price">Our Price: 30.43$ </p>
+	<button type="button" name="button" class="btn btn-sm btn-success"> Details</button>
+	</div>
+	
+	<div class="col-md-3">
+	<h4>Prawn Pasta</h4>
+	<img src="img/ffood1.jpg" class="img-fluid" alt="">
+	<p class="list-price text-danger">List Price: <s>$54.43</s> </p>
+	<p class="price">Our Price: 30.43$ </p>
+	<button type="button" name="button" class="btn btn-sm btn-success"data-toggle="modal" data-target="#details_1"> Details</button>
+	</div>
+	
+	<div class="col-md-3">
+	<h4>Prawn Pasta</h4>
+	<img src="img/ffood1.jpg" class="img-fluid" alt="">
+	<p class="list-price text-danger">List Price: <s>$54.43</s> </p>
+	<p class="price">Our Price: 30.43$ </p>
+	<button type="button" name="button" class="btn btn-sm btn-success" data-toggle="modal" data-target="#details_1"> Details</button>
+	
+	</div>
+	</div>
+	
+	</div>
+	<div class="col-md-2">
+	<p>right side</p>
+	
+	</div>
+	</div>
+	
+	<div class="modal fade" id="details_1" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+	<div class="modal-content">
+	<div class="modal-header">
+	<h4 class="modal-title text-center">Price of Product</h4>
+	<button type="button" class="close" data-dismiss="modal" <span aria-hidden="true">&times;</span></button>
+	</div>
+	<div class="modal-body">
+	<div class="container-fluid">
+	<div class="row">
+	<div class="col-md-6">
+	<div class="center-block">
+	<img src="img/ffood1.jpg" alt="" class="details img-products">
+	</div>
+	</div>
+	<div class="col-md-6">
+	<h4>Details: </h4>
+	<p>This is a very good tasty food</p>
+	<p>price: 55$ </p>
+	<form action="add_cart.php" method="post">
+	<div class="form-group">
+	<div class="col-xs-3">
+	<label for="quantity">Quantity</label>
+	<input type="number" class="form-control quantity_product" id="quantity" name="Quantity" min="1" value="1">
+	</div>
+	</div>
+	
+	</div>
+	</div>
+	</div>
+	
+	</div>
+	<div class="modal-footer">
+	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	<button type="button" class="btn btn-warning" type="submit" input="submit"> <span class="fas fa-shopping-cart"></span> Add to cart</button>
+	
+	</form>
+	
+	</div>
+	</div>
+	</div>
+	</div>
+	
+	</div>
+	
+	
+	
+	<div class="text_section">
+	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas nulla eum velit quis ipsum delectus iusto similique nam eius, blanditiis, veritatis totam nostrum non quisquam possimus sunt, earum harum reprehenderit modi, ad quos ea. Repellendus rerum,
+	officia inventore dignissimos ab in quaerat cumque ipsam suscipit praesentium! Commodi velit iure earum recusandae mollitia sit voluptas, quidem distinctio error voluptatibus. Iste voluptatem beatae deserunt consequuntur doloribus incidunt
+	sunt error reprehenderit quam praesentium, suscipit perferendis, sint. Illo aliquid nobis id amet explicabo, praesentium dignissimos. Repellat repellendus, porro amet numquam et ut, maiores obcaecati delectus deleniti consectetur quod facere,
+	quaerat dolores! Nesciunt obcaecati architecto illo quibusdam mollitia voluptate illum dicta, quam, et soluta neque assumenda necessitatibus fuga nobis suscipit repudiandae atque perferendis quo nam incidunt, cumque amet praesentium nulla
+	officia numquam! Tenetur, similique consequatur perferendis, modi, deserunt adipisci unde aliquid ea consequuntur provident doloribus repellendus ratione enim itaque culpa esse. Nemo ut iure vitae labore magnam officiis dolores delectus voluptatum
+	ullam, optio qui natus, dicta cum eum rerum incidunt molestias, excepturi consectetur voluptas. Ea, facere quae voluptas! Similique quasi nostrum nihil, incidunt quos soluta facere laboriosam, beatae perferendis explicabo rem minima exercitationem
+	ratione dolorem perspiciatis repellat fugit, omnis culpa assumenda quidem dolor nisi possimus sint. Illo iusto saepe, repellendus ipsa magni ullam maiores reprehenderit animi quidem, rerum, voluptatum. Libero, ut tenetur officia modi, ducimus
+	minus rem qui ipsam recusandae atque dicta nemo! Qui atque eligendi vitae, eius veniam blanditiis. Cupiditate eos sed error consequuntur, hic, sit sapiente culpa ipsa dolorem quasi, quaerat voluptatem velit. Voluptas temporibus rem blanditiis
+	tenetur sed voluptatibus aliquam aspernatur reiciendis quo adipisci fugit, possimus repellendus soluta iure velit praesentium provident quis laborum. Dolore non molestiae corporis sed, accusantium enim dolor, alias est iste nisi aut optio
+	iusto, sapiente officia accusamus assumenda. Repellendus commodi doloremque sed eaque praesentium, repudiandae eius voluptates debitis suscipit aperiam nesciunt et! Nam harum, eaque quae ab saepe, dolor odit earum expedita consequatur, natus
+	adipisci recusandae asperiores iste distinctio ut dolorum non animi debitis. Nesciunt voluptatem, reprehenderit, tempora porro maiores aperiam ut. Iure incidunt, optio sint libero voluptatem tenetur quo eos vel, expedita delectus totam laborum,
+	blanditiis odit, est officiis sequi quod doloribus natus rerum eum enim! Sunt hic nisi ratione eos ipsum qui dicta pariatur explicabo animi minus praesentium deserunt blanditiis voluptate facere odit, aspernatur harum, quod, impedit laudantium
+	dolorem! Unde in, suscipit officiis laudantium aperiam quidem magni? Quasi, incidunt numquam ex consectetur esse. Vel officiis aperiam perferendis illum, molestias ipsum asperiores debitis quis, suscipit laborum quam laudantium voluptates.
+	Magnam, minus quidem quo. Officia, ea reiciendis suscipit ratione necessitatibus voluptas consequatur pariatur laudantium blanditiis, vel, doloribus, nihil illum voluptate laborum rerum tempore a optio reprehenderit cum dolores. Earum tempore
+	eos ut ratione recusandae voluptas laudantium in, inventore veniam animi alias non iusto, corrupti nemo reprehenderit eaque, architecto dolore aut mollitia beatae expedita necessitatibus, a ex. Doloremque suscipit provident quia blanditiis
+	deleniti minima in, illo ipsam voluptatem numquam, excepturi voluptatibus obcaecati dolorem. Qui iusto vitae quasi maiores aspernatur veritatis hic dolorem? Libero sequi voluptatibus tempore cum nesciunt. Lorem ipsum dolor sit amet, consectetur
+	adipisicing elit. Et, in, excepturi. Ex quaerat ab repellendus, atque beatae inventore mollitia veniam quibusdam, esse commodi voluptates sequi alias voluptas, impedit aliquam qui eos explicabo expedita magnam quasi dolore dolor. Quidem ipsa
+	ea minus ipsum dolore architecto, quo accusantium, iure ipsam animi iste itaque temporibus odio praesentium, delectus perferendis maiores explicabo unde! Amet, repellat. Impedit sed alias suscipit saepe quis dignissimos doloremque optio enim
+	modi. Odit deserunt harum, dolorem necessitatibus atque fuga exercitationem facere est voluptate molestiae ipsam voluptatem suscipit, corporis at quidem perferendis odio optio ducimus maiores ipsum quam illo alias expedita officiis! Earum
+	sit corporis in rerum ipsam, odit soluta tempore hic. Laboriosam nihil molestias aspernatur nemo doloremque, deserunt ea impedit assumenda cupiditate possimus perferendis accusamus totam asperiores sequi corporis, dolorem, modi exercitationem,
+	doloribus nobis officiis commodi? Officia veniam nemo nulla corrupti non quam voluptas quas! Odio at atque, eligendi voluptas? Dicta ullam vitae, magnam inventore quisquam voluptates culpa officiis, ab quas blanditiis et, ad a corporis est
+	animi deleniti neque. Magnam ipsa repellendus totam molestiae enim id reiciendis voluptatem iste adipisci minus alias, voluptatibus necessitatibus vel eius suscipit officia voluptate, qui illo culpa recusandae provident. Dignissimos corporis
+	laudantium quis laboriosam praesentium optio nesciunt, nobis cum quidem culpa alias porro minus accusantium quae veritatis corrupti consequatur, asperiores deserunt nihil odit sit similique quod provident! Animi, numquam veritatis blanditiis
+	minima! Debitis in voluptatibus itaque esse et ipsa perspiciatis minus atque autem dolorem quaerat nostrum quae eveniet ducimus delectus, neque saepe. Inventore necessitatibus omnis, qui eligendi deleniti culpa amet. Vel itaque harum repellat
+	dolorum optio inventore enim sapiente ut quaerat rem reprehenderit natus, ad maiores sit atque ipsa veniam! Necessitatibus facere cupiditate error iusto, eligendi, quis sit unde tenetur odio laboriosam est voluptate possimus quidem! Tempora
+	molestiae facilis iure distinctio assumenda culpa, voluptate quo, molestias ex enim saepe voluptatibus reiciendis ullam exercitationem veniam sed temporibus blanditiis, architecto commodi explicabo est repudiandae. Laboriosam eligendi ducimus
+	laborum hic, at suscipit soluta corporis quis dicta natus mollitia ullam cumque molestiae maiores quidem quas minus, incidunt et, porro consequatur est? Eveniet suscipit, autem ratione voluptatum est enim eaque neque ipsa porro cumque sequi
+	quod quos alias odio illo dolore aut vero. Repudiandae voluptatum qui dignissimos esse tempora sit ut quaerat dolor laborum, earum harum ad sapiente soluta, rem quisquam est, incidunt accusantium architecto? Possimus eum quod, qui debitis
+	asperiores doloribus ducimus eius sequi molestias blanditiis voluptate quis, aliquid. Placeat est provident obcaecati, tempora rem commodi esse doloremque omnis, debitis sapiente, similique fugit sequi assumenda deserunt. Sit deleniti delectus
+	excepturi ea hic amet dolore quibusdam consequatur culpa molestiae obcaecati placeat quia saepe quisquam quod, neque autem nostrum corporis facilis facere, suscipit similique laborum officiis dignissimos iusto! Saepe sint omnis quis, consectetur
+	magnam voluptatem mollitia quos! Sunt fuga maiores impedit quibusdam modi vitae, aliquam laborum at facilis ratione, praesentium ad, placeat sint dolor vel maxime delectus ducimus reprehenderit deserunt eos blanditiis et! Numquam impedit,
+	nobis ea! Assumenda in facilis aspernatur rerum neque alias quos iure aut, et dolores beatae!
+	</div>
+	
+	
+	
+	
+	
+	
+	<!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> -->
+	<script src="js/jquery-3.3.1.min.js"></script>
+	
+	<script src="js/bootstrap.min.js"></script>
+	
+	
+	<script type="text/javascript">
+	$(document).ready(function() {
+	
+	$(window).scroll(function() {
+	if ($(document).scrollTop() > 550) {
+	
+	$('#nav').addClass('change');
+	// test
+	$(".dropdown").mouseenter(function() {
+	// alert("Hello! I am an alert box!");
+	// $(".dropdown").addClass('displayOn');
+	// alert("Hello! brother!!!");
+	$(".dropdown-menu").css("background", "#1C3334");
+	$(".dropdown-item").css("background", "#1C3334");
+	
+	$(".dropdown-menu").css("opacity", "9");
+	
+	$(".dropdown-menu").hover(function() {
+	// alert("inside the item");
+	$(".dropdown-menu").css("background", "#1C3334");
+	$(".dropdown-item").css("background", "#1C3334");
+	$(".dropdown-menu").css("opacity", "9");
+	});
+	
+	});
+	$(".dropdown").mouseleave(function() {
+	$(".dropdown-menu").css("background", "black");
+	$(".dropdown-menu").css("opacity", "0.6")
+	$(".dropdown-item").css("background", "black")
+	});
+	} else {
+	$('#nav').removeClass('change');
+	$(".dropdown").mouseenter(function() {
+	// alert("Hello! I am an alert box!");
+	// $(".dropdown").addClass('displayOn');
+	// alert("Hello! brother!!!");
+	$(".dropdown-menu").css("background", "black");
+	$(".dropdown-item").css("background", "black");
+	$(".dropdown-menu").css("opacity", "0.6");
+	$(".dropdown-menu").hover(function() {
+	// alert("inside the item");
+	$(".dropdown-menu").css("background", "#000");
+	$(".dropdown-item").css("background", "#000");
+	$(".dropdown-menu").css("opacity", "0.6");
+	});
+	});
+	$(".dropdown").mouseleave(function() {
+	$(".dropdown-menu").css("background", "black");
+	$(".dropdown-item").css("background", "black");
+	$(".dropdown-menu").css("opacity", "0.6")
+	});
+	}
+	});
+	});
+	</script>
+	
+	
+	
+	<!-- $(".dropdown-menu").hover(function() {
+	$(this).css("background-color", "black");
+	$(this).css("opacity", "9");
+	
+	}, function() {
+	// $(this).css("background-color", "t");
+	$(this).css("background-color", "black");
+	$(this).css("opacity", "0.6");
+	
+	});
+	-->
+	
+	
+	</body>
+	
+	</html>
+		

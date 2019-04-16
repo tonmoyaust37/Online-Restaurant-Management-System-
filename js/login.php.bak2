@@ -1,0 +1,41 @@
+<?php
+	require_once('function.php');
+	session_start();
+	//echo $_SERVER['REQUEST_METHOD'];
+	if($_SERVER['REQUEST_METHOD']!="POST"){
+		header("location:login_system.php");
+	}
+	else{
+		$email= $_POST['email'];
+		$password= $_POST['password'];
+		//echo "Hello from ".$email;
+		
+		$count= checkMail($email);
+		if($count>0){
+			$getPass= getPassword($email);
+			if($getPass==$password){
+				$_SESSION['email'] = $email;
+				$_SESSION['password'] = $password;	
+				
+				$_SESSION['adminCheck']='1';
+				header("location:success.php");
+			}
+			else{
+				
+				echo "<script>alert('Wrong Password');</script>";
+				echo '<script>window.location="login_system.php"</script>';	
+				//die("Wrong Password");
+			}
+		}
+		else{
+			echo "<script>alert('Wrong Password or Email');</script>";			
+			echo '<script>window.location="login_system.php"</script>';	
+			
+			//die("Wrong Email or Password");
+		}
+		
+		
+		
+	}
+	
+?>
